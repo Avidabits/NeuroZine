@@ -1,0 +1,65 @@
+#N canvas 428 76 709 509 10;
+#N canvas 0 0 450 300 (subpatch) 0;
+#X array mod-output 882 float 0 black black;
+#X coords 0 1 881 -1 158 56 1;
+#X restore 11 170 graph;
+#X msg 235 216 bang \; pd dsp 1;
+#X obj 222 136 complex-mod~;
+#X floatatom 290 92 6 0 20000 0 - - -, f 6;
+#X obj 222 264 tabwrite~ mod-output;
+#X text 312 136 right outlet;
+#X text 313 152 gives the other;
+#X text 312 168 sideband;
+#X obj 9 -75 loadbang;
+#X obj 10 -43 metro 100;
+#N canvas 0 0 450 300 (subpatch) 0;
+#X array input_signal 882 float 0 black black;
+#X coords 0 1 881 -1 158 56 1;
+#X restore 11 19 graph;
+#X obj 37 -16 tabwrite~ input_signal;
+#X obj 225 175 *~ 0.8;
+#X obj 420 177 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 400 207 *~;
+#X obj 400 241 dac~;
+#X obj 438 33 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 418 63 *~;
+#X obj 418 97 dac~;
+#X obj 219 -43 adc~;
+#X obj 216 6 *~ 1;
+#X msg 559 61 start;
+#X msg 559 86 stop;
+#X msg 518 29 open grabacion.wav;
+#X obj 533 114 writesf~;
+#X obj 222 96 hilbert~;
+#X text 193 375 Lo que hace la transformada de hilbert es precisamente
+obtener la parte real y la parte imaginaria por separado \, con lo
+cual podemos usar el complex-mod;
+#X text 193 298 El modulador complejo complex-mod~ acepta de entrada
+dos señales \, que constituyen la parte real e imaginaria de una misma
+señal. A continuacion realiza la multiplicación en el campo complejo
+por una sinusoide para desplazar todas las frecuencias en la cantidad
+especificada por su tercera entrada;
+#X connect 1 0 4 0;
+#X connect 2 0 12 0;
+#X connect 3 0 2 2;
+#X connect 8 0 9 0;
+#X connect 9 0 4 0;
+#X connect 9 0 11 0;
+#X connect 12 0 4 0;
+#X connect 12 0 14 0;
+#X connect 12 0 24 0;
+#X connect 13 0 14 1;
+#X connect 14 0 15 0;
+#X connect 16 0 17 1;
+#X connect 17 0 18 0;
+#X connect 19 0 20 0;
+#X connect 20 0 11 0;
+#X connect 20 0 17 0;
+#X connect 20 0 25 0;
+#X connect 21 0 24 0;
+#X connect 22 0 24 0;
+#X connect 23 0 24 0;
+#X connect 25 0 2 0;
+#X connect 25 1 2 1;
