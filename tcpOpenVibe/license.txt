@@ -1,0 +1,34 @@
+tcpOpenVibe.dll is a Pd external for receiving OpenVibe floats
+Copyright (C) 2018 Rosa Bernárdez
+
+
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+
+With code from
+ * HOWTO write an External for Pure data
+an With most code from 
+ * tcpclient.c Martin Peach 20060508, working version 20060512 
+ * linux version 20060515 
+
+---------------------------------------------------------
+This Pd External is intented to receive data from OpenVibe TCPWrite
+taking into account the specification described at:
+http://openvibe.inria.fr//documentation/2.0.1/Doc_BoxAlgorithm_TCPWriter.html
+
+In order to use the POSIX sockets of tcpclient I use the library: 
+PTHREADS-WIN32 RELEASE 2.9.0 (2012-05-25)
+-----------------------------------------
+Web Site: http://sourceware.org/pthreads-win32/

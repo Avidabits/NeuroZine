@@ -1,0 +1,125 @@
+#N canvas 474 22 743 613 10;
+#X msg 115 47 disconnect;
+#X msg 82 17 connect localhost 50000;
+#X msg 132 69 dump 0;
+#X msg 148 90 dump 1;
+#X msg 157 114 verbosity 0;
+#X msg 168 137 verbosity 1;
+#X obj 9 19 pddp/dsp;
+#X obj 89 243 dac~;
+#X obj 32 155 metro 500;
+#X text 362 136 graph the output;
+#N canvas 0 0 450 300 (subpatch) 0;
+#X array \$0-array 100 float 0 black black;
+#X coords 0 -1 99 1 250 108 1;
+#X restore 286 25 graph;
+#X obj 32 126 loadbang;
+#X obj 11 268 tabwrite~ \$0-array;
+#X obj 122 181 tcpOpenVibe;
+#X obj 3 583 cnv 15 552 21 empty \$0-pddp.cnv.footer empty 20 12 0
+14 -228856 -66577 0;
+#X obj 4 335 cnv 3 550 3 empty \$0-pddp.cnv.inlets inlets 8 12 0 13
+-228856 -1 0;
+#N canvas 540 300 545 345 META 0;
+#X text 12 25 LICENSE SIBSD;
+#X text 12 5 KEYWORDS BCI \, OpenVibe \, Brain signal adquisition;
+#X text 12 45 DESCRIPTION get signal data from OpenVibe TCPWriter box
+;
+#X text 12 65 INLET_0 control messages;
+#X text 12 85 OUTLET_0 float stream;
+#X text 12 105 LIBRARY external;
+#X text 12 125 AUTHOR Rosa Bernárdez;
+#X text 12 146 WEBSITE https://github.com/Avidabits;
+#X text 12 165 RELEASE_DATE 2018;
+#X text 12 185 HELP_PATCH_AUTHORS Rosa Bernárdez;
+#X restore 503 585 pd META;
+#X obj 4 400 cnv 3 550 3 empty \$0-pddp.cnv.outlets outlets 8 12 0
+13 -228856 -1 0;
+#X obj 3 527 cnv 3 550 3 empty \$0-pddp.cnv.argument arguments 8 12
+0 13 -228856 -1 0;
+#X obj 3 555 cnv 3 550 3 empty \$0-pddp.cnv.more_info more_info 8 12
+0 13 -228856 -1 0;
+#X text 92 533 (none);
+#N canvas 102 220 879 426 Related_objects 0;
+#X obj 1 1 cnv 15 425 20 empty \$0-pddp.cnv.subheading empty 3 12 0
+14 -204280 -1 0;
+#X obj 25 39 netclient;
+#X obj 24 67 netserver;
+#X obj 115 67 netsend;
+#X obj 182 68 netreceive;
+#X obj 116 40 route;
+#X obj 183 39 udpreceive;
+#X text 8 2 [tcpOpenVibe] Related Objects;
+#X obj 192 146 tcpclient;
+#X obj 24 143 netclient~;
+#X obj 24 120 tcpclient~;
+#X text 21 100 externals:;
+#X obj 194 120 import mrpeach;
+#X obj 190 171 tcpreceive;
+#X obj 189 198 tcpserver;
+#X obj 310 45 import maxlib;
+#X restore 105 585 pd Related_objects;
+#X obj 82 344 cnv 17 3 45 empty \$0-pddp.cnv.let.0 0 5 9 0 16 -228856
+-162280 0;
+#X text 102 343 float;
+#X obj 82 409 cnv 17 3 17 empty \$0-pddp.cnv.let.0 0 5 9 0 16 -228856
+-162280 0;
+#X obj 7 585 pddp/pddplink all_about_help_patches.pd -text Usage Guide
+;
+#X text 172 343 - A string from OpenVibe TCPWriter box. This stream
+includes a header struct.;
+#X text 102 373 messages;
+#X text 172 372 connect \, disconnect \, dump \, verbosity allows you
+to see the float stream in Pd console Window;
+#X text 173 407 a stream of floats from the OpenVibe brain signal.
+Header from TCPWriter Box does not appear in this stream \, only signal
+data;
+#X obj 132 265 min, f 6;
+#X floatatom 156 296 5 0 0 0 - - -, f 5;
+#X floatatom 204 294 9 0 0 0 - - -, f 9;
+#X obj 214 269 max;
+#X text 99 561 based on mrpeach tcpclient;
+#X obj 82 451 cnv 17 3 17 empty \$0-pddp.cnv.let.0 1 5 9 0 16 -228856
+-162280 0;
+#X text 102 408 float;
+#X obj 82 479 cnv 17 3 17 empty \$0-pddp.cnv.let.0 2 5 9 0 16 -228856
+-162280 0;
+#X text 102 480 float;
+#X obj 266 236 unpack 0 0 0 0;
+#X floatatom 266 259 3 0 0 0 - - -, f 3;
+#X floatatom 297 259 3 0 0 0 - - -, f 3;
+#X floatatom 329 259 3 0 0 0 - - -, f 3;
+#X floatatom 361 259 3 0 0 0 - - -, f 3;
+#X text 176 478 logical \, whether is connected or not;
+#X text 177 451 packet address connected to. four packs;
+#X text 102 453 float;
+#X obj 83 502 cnv 17 3 17 empty \$0-pddp.cnv.let.0 3 5 9 0 16 -228856
+-162280 0;
+#X text 103 503 float;
+#X text 177 501 unused- not supported \, reserved for sent information
+;
+#X obj 227 183 dsp;
+#X obj 96 210 line~ 50;
+#X connect 0 0 13 0;
+#X connect 1 0 13 0;
+#X connect 2 0 13 0;
+#X connect 3 0 13 0;
+#X connect 4 0 13 0;
+#X connect 5 0 13 0;
+#X connect 8 0 12 0;
+#X connect 11 0 8 0;
+#X connect 13 0 30 0;
+#X connect 13 0 33 0;
+#X connect 13 0 51 0;
+#X connect 13 1 39 0;
+#X connect 13 2 50 0;
+#X connect 30 0 31 0;
+#X connect 31 0 30 1;
+#X connect 32 0 33 1;
+#X connect 33 0 32 0;
+#X connect 39 0 40 0;
+#X connect 39 1 41 0;
+#X connect 39 2 42 0;
+#X connect 39 3 43 0;
+#X connect 51 0 7 0;
+#X connect 51 0 12 0;
