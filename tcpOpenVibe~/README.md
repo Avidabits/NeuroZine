@@ -6,7 +6,7 @@ Avidabits, engineer and artist wrote this code  [http://avidabits.tumblr.com/](h
 
 Ir order to execute que external you neeed to have 2 dll 
 -tcpOpenVibe~.dll (this very code) 
--pthreadVC2.dll that is part of PTHREADS-WIN32 describe below.
+-pthreadVC2.dll that is part of PTHREADS-WIN32 described below.
 Both dlls are in the debug and release directories For you convinience, the file help-tcpopenvibe.pd is in the same directory
 
 With code from

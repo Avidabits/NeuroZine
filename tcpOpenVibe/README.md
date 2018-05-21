@@ -6,14 +6,15 @@ Avidabits, engineer and artist wrote this code  [http://avidabits.tumblr.com/](h
 
 Ir order to execute que external you neeed to have 2 dll 
 -tcpOpenVibe.dll (this very code) 
--pthreadVC2.dll that is part of PTHREADS-WIN32 describe below.
+-pthreadVC2.dll that is part of PTHREADS-WIN32 described below.
 Both dlls are in the debug and release directories For you convinience, the file help-tcpopenvibe.pd is in the same directory
 
 With code from
 
- -   HOWTO write an External for Pure data
-   (c) 2001-2006 IOhannes m zmölnig zmoelnig 
- - and With most code from   tcpclient.c Martin Peach 20060508, working version 20060512  linux version 20060515
+ - HOWTO write an External for Pure data (c) 2001-2006 IOhannes m zmölnig zmoelnig 
+ - and with most code from   tcpclient.c Martin Peach 20060508, working version 20060512  linux version 20060515
+ - using the library PTHREADS-WIN32 that allows for the use of POSIX threads in windows environment. Manteined by Ross Johnson and accesible on web page sourceware.org/pthreads-win32/
+
 ----------
 
 This Pd External is intented to receive data from OpenVibe TCPWrite taking into account the specification described at: [http://openvibe.inria.fr//documentation/2.0.1/Doc\_BoxAlgorithm\_TCPWriter.html](http://openvibe.inria.fr//documentation/2.0.1/Doc_BoxAlgorithm_TCPWriter.html)
