@@ -22,8 +22,8 @@ La comunicación entre ambos programas es vía TCP y OSC.
 Para el caso de TCP se han desarrollado los external de Pd tcpOpenVibe y tcpOpenVibe~
 Se incluyen los escenarios OpenVibe y los patchs Pure Data usados en la sonificacion
 
-El trabajo está en progreso. 
+#### NeuroCine
 
-#### Caja de Pandora IV 
+Neuro Cine es un proyecto OpenFrameworks que integra la sonorización y la visualizacion. 
 
-Proyecto de integración de la sonorización con la visualización abstracta. 
+
