@@ -52,7 +52,7 @@ void ofApp::keyPressed(int key){
 
 	case 'S':
 	case 's': //Brain Sparks
-		visualsControler.conmuteSparks();
+		visualsControler.conmuteSparkingPoint();
 		break;
 	case 'c':
 	case 'C': // Crazy Line
@@ -101,7 +101,7 @@ void ofApp::keyPressed(int key){
 	case ' ':
 		ofGetWindowPtr()->toggleFullscreen();
 		visualsControler.onChangeWindowSize();
-		channelsReceiver.updateAttractionCenter(ofGetWidth() / 2, ofGetHeight() / 2);
+		channelsReceiver.updateAttractionCenter();
 	break;
 	default:
 		break;
@@ -164,19 +164,19 @@ void ofApp::ShowKeyboardInstructions()
 {
 	cout << "\nThis is Neuro Cine, by AvidaBits";
 	cout << "\nOlimex device must be connected";
-	cout << "\nOpenVibe server must connected and playing";
-	cout << "\nOpenVibe designed must have the OCSMeans.xml scenary open and playing";
-	cout << "\nThe keyboards commands available are as follows:";
+	cout << "\nOpenVibe Server must be connected and playing";
+	cout << "\nOpenVibe Designer must have the OCSMeans.xml scenary open and playing";
+	cout << "\nThe keyboards available commands are as follows:";
 	cout << "\n I, i makes this instruccions appear again";
 	cout << "\n V, v set the verbose mode";
-	cout << "\n L, l log statistics on screen";
+	cout << "\n L, l log statistics on screen and on file NeuroLog.txt";
 	cout << "\n SPACEBAR toggles fullscreen mode";
 	cout << "\n F, f activated/deactivated the saving frames mode";
-	cout << "\n S, s activated/deactivated the visual: Brain Sparks";
-	cout << "\n C, c activated/deactivated the visual: Crazy Line";
+	cout << "\n S, s activated/deactivated the visual: brain Sparks";
+	cout << "\n C, c activated/deactivated the visual: Crazy line";
 	cout << "\n B, b activated/deactivated the visual: Blue point";
-	cout << "\n d, D activated/deactivated the visual: Dreamer Curtain";
-	cout << "\n p, P activated/deactivated the visual: Pulsing Circunference";
+	cout << "\n D, d activated/deactivated the visual: Drowsiness curtain";
+	cout << "\n P, p activated/deactivated the visual: Pulsing circunference";
 	cout << "\n";
 }
 

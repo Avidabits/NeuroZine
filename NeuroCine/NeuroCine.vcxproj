@@ -244,6 +244,7 @@
     <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscReceivedElements.cpp" />
     <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscTypes.cpp" />
     <ClCompile Include="src\PulsingCircunference.cpp" />
+    <ClCompile Include="src\SparkingPoint.cpp" />
     <ClCompile Include="src\VisualsControler.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -336,7 +337,7 @@
     <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscReceivedElements.h" />
     <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscTypes.h" />
     <ClInclude Include="src\PulsingCircunference.h" />
-    <ClInclude Include="src\Sparks.h" />
+    <ClInclude Include="src\SparkingPoint.h" />
     <ClInclude Include="src\VisualsControler.h" />
     <ClInclude Include="src\WaveDrawer.h" />
   </ItemGroup>

@@ -84,21 +84,19 @@ void ChannelsReceiver::update()
 				delta.setOSCSample(m.getArgAsFloat(0)); 
 			} else if (m.getAddress() == "/eeg/theta/mean") {
 				theta.setOSCSample(m.getArgAsFloat(0));
-				attractionCenter.x = ceil(ofMap(valence.getOSCSample(), valence.getMin(), valence.getMax(), 0, ofGetWidth()));
 			} else if (m.getAddress() == "/eeg/alpha/mean") {
 				alpha.setOSCSample(m.getArgAsFloat(0));
-				attractionCenter.y = ceil(ofMap(arousal.getOSCSample(), arousal.getMin(), arousal.getMax(), 0, ofGetHeight()));
 			}else if (m.getAddress() == "/eeg/beta/mean") {
 				beta.setOSCSample(m.getArgAsFloat(0));
-				updateAttractionCenter(
-					ceil(ofMap(valence.getOSCSample(), valence.getMin(), valence.getMax(), 0, ofGetWidth()))  , 
-					ceil(ofMap(arousal.getOSCSample(), arousal.getMin(), arousal.getMax(), 0, ofGetHeight())) );
 			} else if (m.getAddress() == "/eeg/gamma/mean") {
 				gamma.setOSCSample(m.getArgAsFloat(0));
 			} else if (m.getAddress() == "/eeg/arousal/mean") {
 				arousal.setOSCSample(m.getArgAsFloat(0));
+				updateAttractionCenter();
+
 			} else if (m.getAddress() == "/eeg/valence/mean") {
 				valence.setOSCSample(m.getArgAsFloat(0));
+				updateAttractionCenter();
 			} else {
 				// unrecognized message
 				ofLog() << "Unknown message ";
@@ -107,19 +105,15 @@ void ChannelsReceiver::update()
 			ofLog() << message << "\n";
 		}//while has messages
 
-
-		// now is time to compute the calculated variables
-		// but we calculate them here for the moment
-		
 				
 }//ChannelsReceiver::update
 
-void ChannelsReceiver::updateAttractionCenter(float x, float y)
+void ChannelsReceiver::updateAttractionCenter()
 {
-	attractionCenter.x = x;
-	attractionCenter.y = y;
+	attractionCenter.x = ofMap(abs(valence.getOSCSample()), 0, valence.getMax(), 0, ofGetWidth());
+	attractionCenter.y = ofMap(abs(arousal.getOSCSample()), 0, arousal.getMax(), 0, ofGetHeight());
 	// common atraccion center updates inmediatly.
-	// the visuals atraccion centers will change smothly to go here
+	// the visuals atraction centers will change smothly to go here
 }
 
 
@@ -165,7 +159,7 @@ float  mapExp(float value, float inputMin, float inputMax, float outputMin, floa
 	// the we calculate the power(exp), being sure that the result will be constrained between 0 and 1
 	float middleValue = pow(ofMap(value, inputMin, inputMax, 0, 1), exponent);
 	// finally we map the middleValue to the objetive range
-	return ceil(ofMap(middleValue, 0, 1, outputMin, outputMax));
+	return ofMap(middleValue, 0, 1, outputMin, outputMax);
 
 }
 

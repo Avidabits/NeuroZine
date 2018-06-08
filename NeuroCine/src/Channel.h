@@ -39,7 +39,7 @@ public:
 	bool bVerbose = false;
 // some calculated variables, shared between visuals
 	ofPoint attractionCenter; 
-	void updateAttractionCenter(float x, float y);
+	void updateAttractionCenter();
 	~ChannelsReceiver(); // log historicals on exit
 private:
 	ofxOscReceiver receiver;
@@ -50,3 +50,6 @@ private:
 
 //helper funcion por exponential interpolations, that generate more organic results
 float  mapExp(float value, float inputMin, float inputMax, float outputMin, float outputMax, float exponent);
+
+// helper funtionfor drwing
+

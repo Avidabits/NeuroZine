@@ -10,7 +10,7 @@
 #include "Channel.h"
 #include "WaveDrawer.h"
 #include "PulsingCircunference.h" // related to alertness, beta channels levels
-#include "Sparks.h"
+#include "SparkingPoint.h"
 #include "BigCircle.h"
 #include "CrazyLine.h"
 #include "Curtain.h"
@@ -27,14 +27,14 @@ public:
 	void drawLastTransformations();
 	void onChangeWindowSize();
 	void fadeBackground();
-	void conmuteSparks();
+	void conmuteSparkingPoint();
 	void conmuteCrazyLine();
 	void conmuteBigCircle();
 	void conmuteCurtain();	 
 	void conmutePulsingCircunference();
 private: 
 	ofColor backgroundColor;
-	Sparks sparks;
+	SparkingPoint sparksEmitter;
 	BigCircle circle;
 	PulsingCircunference circunference;
 	CrazyLine crazyLine;

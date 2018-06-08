@@ -9,7 +9,7 @@ CrazyLine::CrazyLine(void)
 void CrazyLine::setup()
 {
 	// Here we set the number of points ad inicial position 
-	float h = ofGetHeight() / 2;
+	float h = ofGetHeight() *0.8;
 	float dx = ofGetWidth() / 15;
 	for (int i = 0; i < crazyPoints.size(); i++) crazyPoints[i]={ i*dx, h };
 	// we have created fifthteen points horizontaly and along the width of screen
@@ -27,11 +27,11 @@ void CrazyLine::update(ChannelsReceiver &channels)
 
 	// TODO: don't use 1 as minimal but zero. 
 	// TODO: don't user 12 as maximal but a number related to screen resolution
-	strokeWidth = round(ofMap(channels.gamma.getOSCSample(), 0, channels.gamma.getHistoricalMax(), 1, 12));
+	strokeWidth = ofMap(channels.gamma.getOSCSample(), 0, channels.gamma.getHistoricalMax(), 0.5, 10);
 	
 	// TODO: don't use 1 as minimal but zero. 
 	// TODO: don't user 50 as maximal but a number related to screen resolution
-	float modulus = ceil(ofMap(channels.gamma.getOSCSample(), 0, channels.gamma.getHistoricalMax(), 1, 50));
+	float modulus = ofMap(channels.gamma.getOSCSample(), 0, channels.gamma.getHistoricalMax(), 0.1, 20);
    
 	// adding some noisy variation on crazyPoints related to gamma levels
 	ofPoint noise(1, 0, 0); //starting with a normalize vector

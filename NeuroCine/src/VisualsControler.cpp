@@ -3,7 +3,7 @@
 #include "VisualsControler.h"
 
 
-void VisualsControler::conmuteSparks() { sparks.conmuteActivation(); }
+void VisualsControler::conmuteSparkingPoint() { sparksEmitter.conmuteActivation(); }
 void VisualsControler::conmuteCrazyLine() { crazyLine.conmuteActivation(); }
 void VisualsControler::conmuteBigCircle() { circle.conmuteActivation(); }
 void VisualsControler::conmuteCurtain() { curtain.conmuteActivation(); }
@@ -11,7 +11,7 @@ void VisualsControler::conmutePulsingCircunference() { circunference.conmuteActi
 
 VisualsControler::VisualsControler()
 {
-	waveDrawers.push_back(&sparks);
+	waveDrawers.push_back(&sparksEmitter);
 	waveDrawers.push_back(&circle);
 	waveDrawers.push_back(&crazyLine);
 	waveDrawers.push_back(&curtain);
