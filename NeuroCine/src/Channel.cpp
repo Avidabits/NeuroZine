@@ -1,4 +1,6 @@
 #include "Channel.h"
+#include "ofApp.h"
+
 
 //Brain channels are populated with data from OpenVibe via OSC
 
@@ -97,12 +99,19 @@ void ChannelsReceiver::update()
 			} else if (m.getAddress() == "/eeg/valence/mean") {
 				valence.setOSCSample(m.getArgAsFloat(0));
 				updateAttractionCenter();
-			} else {
+			}else if (m.getAddress() == "/eeg/saveframes") {
+				((ofApp*)ofGetAppPtr())->bSaveFrames=true;
+				cout << "\nFrame saving activated from OSC";
+			}
+			else if (m.getAddress() == "/eeg/stopframes") {
+				((ofApp*)ofGetAppPtr())->bSaveFrames = false;
+				cout << "\nFrame saving deactivated from OSC";
+			}
+			else {
 				// unrecognized message
-				ofLog() << "Unknown message ";
+				formatMessage(m); 
+				ofLog() << "Unknown message "<<message;
 			} //format unknown message
-			formatMessage(m);
-			ofLog() << message << "\n";
 		}//while has messages
 
 				
@@ -110,8 +119,8 @@ void ChannelsReceiver::update()
 
 void ChannelsReceiver::updateAttractionCenter()
 {
-	attractionCenter.x = ofMap(abs(valence.getOSCSample()), 0, valence.getMax(), 0, ofGetWidth());
-	attractionCenter.y = ofMap(abs(arousal.getOSCSample()), 0, arousal.getMax(), 0, ofGetHeight());
+	attractionCenter.x = ofMap(abs(valence.getOSCSample()), 0, valence.getMean(), 0, ofGetWidth()/2);
+	attractionCenter.y = ofMap(abs(arousal.getOSCSample()), 0, arousal.getMean(), 0, ofGetHeight()/2);
 	// common atraccion center updates inmediatly.
 	// the visuals atraction centers will change smothly to go here
 }

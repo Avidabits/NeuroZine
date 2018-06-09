@@ -1,4 +1,4 @@
-#N canvas 0 0 1265 634 10;
+#N canvas 0 0 886 634 10;
 #X obj 26 -68 import mrpeach;
 #X obj 130 -9 unpackOSC;
 #X obj 130 15 routeOSC /eeg;
@@ -97,7 +97,7 @@
 #X obj 656 319 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 307 -65 dsp;
-#X obj 288 -53 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 288 -53 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 323 393 dac~;
 #X floatatom 72 187 5 0 0 0 - - -, f 5;
@@ -105,11 +105,11 @@
 #X floatatom 364 182 5 0 0 0 - - -, f 5;
 #X floatatom 515 185 5 0 0 0 - - -, f 5;
 #X floatatom 669 184 5 0 0 0 - - -, f 5;
-#X msg 237 449 start;
-#X msg 244 474 stop;
-#X obj 184 494 writesf~;
+#X msg 492 446 start;
+#X msg 499 471 stop;
+#X obj 433 507 writesf~;
 #X obj 69 456 *~ 1;
-#X msg 108 458 open brainOSC.wav;
+#X msg 363 455 open brainOSC.wav;
 #X text 345 -73 To be used width OpenVibe scenario OSCMeans.xml  (First
 open routeOSC-help from their path in order to dlls be loades);
 #X obj 17 58 routeOSC /delta/mean;
@@ -160,6 +160,24 @@ open routeOSC-help from their path in order to dlls be loades);
 #X obj 327 154 expr $f1*6/$f2;
 #X obj 478 159 expr $f1*4/$f2;
 #X obj 631 157 expr $f1*1/$f2;
+#X msg 647 399 connect 127.0.0.1 9998;
+#X obj 691 497 packOSC;
+#X obj 590 413 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 625 444 send /eeg/saveframes;
+#X obj 749 520 tgl 15 0 empty empty connected 20 7 0 8 -24198 -241291
+-1 1 1;
+#X obj 749 497 udpsend;
+#X obj 591 440 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 603 471 send /eeg/stopframes;
+#X text 827 492 That is a system that allows sincronizing saving video
+frames and sound in order to produce later videos for NeuroCine;
+#X msg 772 462 disconnect;
+#X obj 591 390 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X text 794 400 this is where NeuroCine OpenFrameworks is listening
+;
 #X connect 1 0 2 0;
 #X connect 2 0 61 0;
 #X connect 2 0 62 0;
@@ -265,3 +283,15 @@ open routeOSC-help from their path in order to dlls be loades);
 #X connect 88 0 52 0;
 #X connect 89 0 53 0;
 #X connect 90 0 54 0;
+#X connect 91 0 96 0;
+#X connect 92 0 96 0;
+#X connect 93 0 94 0;
+#X connect 93 0 55 0;
+#X connect 94 0 92 0;
+#X connect 96 0 95 0;
+#X connect 97 0 98 0;
+#X connect 97 0 56 0;
+#X connect 98 0 92 0;
+#X connect 100 0 96 0;
+#X connect 101 0 91 0;
+#X connect 101 0 59 0;

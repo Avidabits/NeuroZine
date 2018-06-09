@@ -36,7 +36,6 @@ public:
 	Channel delta, theta, alpha, beta, gamma;// channels to be received from OpenVibe
 	Channel arousal, valence; // channels computed on OpenVibe 
 	string message;
-	bool bVerbose = false;
 // some calculated variables, shared between visuals
 	ofPoint attractionCenter; 
 	void updateAttractionCenter();

@@ -26,7 +26,6 @@ public:
 	void gotMessage(ofMessage msg);
 	void ShowKeyboardInstructions();
 	bool bSaveFrames = false;
-	bool bVerbose = false;
 	// channel data
 	ChannelsReceiver channelsReceiver;
 	//visuals

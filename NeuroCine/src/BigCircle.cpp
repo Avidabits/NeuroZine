@@ -23,8 +23,8 @@ void BigCircle::draw()
 { 
 	if (!bActive) return;
 	// just a point
-	// una bola azul palpita segun los niveles de relajacion (canales 5 y 6) 
-	ofSetColor(96,16,227, 50); //100->opaco
+	// A big circle changes regarding levels of relax (alpha)
+	ofSetColor(96,16,227); 
 	ofSetLineWidth(0);
 	ofFill();
 	ofDrawCircle(attractionCenter, radiusRelax);

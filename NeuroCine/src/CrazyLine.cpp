@@ -25,13 +25,9 @@ void CrazyLine::update(ChannelsReceiver &channels)
 	// vector<ofPoint> crazyPoints;
 	// float strokeWidth = 1;
 
-	// TODO: don't use 1 as minimal but zero. 
-	// TODO: don't user 12 as maximal but a number related to screen resolution
-	strokeWidth = ofMap(channels.gamma.getOSCSample(), 0, channels.gamma.getHistoricalMax(), 0.5, 10);
+	strokeWidth = ofMap(abs(channels.gamma.getOSCSample()), 0, channels.gamma.getHistoricalMax(), 0.5, ofGetHeight() / 70);
 	
-	// TODO: don't use 1 as minimal but zero. 
-	// TODO: don't user 50 as maximal but a number related to screen resolution
-	float modulus = ofMap(channels.gamma.getOSCSample(), 0, channels.gamma.getHistoricalMax(), 0.1, 20);
+	float modulus = ofMap(channels.gamma.getOSCSample(), 0, channels.gamma.getHistoricalMax(), 0.1, ofGetHeight()/30);
    
 	// adding some noisy variation on crazyPoints related to gamma levels
 	ofPoint noise(1, 0, 0); //starting with a normalize vector

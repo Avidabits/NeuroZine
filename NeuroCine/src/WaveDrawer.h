@@ -11,7 +11,5 @@ public:
 	virtual void update(ChannelsReceiver &channels)=0;
 	virtual void draw()=0;
 	void conmuteActivation() { bActive = !bActive; };
-
-protected:
 	bool bActive = true;
 };

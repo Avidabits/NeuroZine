@@ -5,9 +5,11 @@
 void ofApp::setup()
 {
 	ofSetLogLevel(OF_LOG_SILENT);
+	
 	ShowKeyboardInstructions();
 	// listen on the given port
 	channelsReceiver.setup(9998);
+
 	visualsControler.setup();
 
 }
@@ -24,7 +26,7 @@ void ofApp::draw(){
 
 	// Before drawing visual, we need to perform all transformations
 	// on the backgroung from clearing to fading, rotation, etc, etc.
-	// TODO: Here transformations on background before Visuals
+	// Here transformations on background before Visuals
 	visualsControler.drawFirstTransformations();
 
 	// The WaveDrawer classes draw differents kinds of Visual concepts
@@ -37,7 +39,7 @@ void ofApp::draw(){
 	
 	// Once visuals are drawn, we can perform frame based transformations
     // such as shaders, filters, Kaleidoscopes, rotations, etc, etc
-	// TODO:  Implement frame transformations
+	// call post frame transformations
 	visualsControler.drawLastTransformations();
 
 	// Once drawing is fully finish we can save the frame
@@ -49,7 +51,12 @@ void ofApp::keyPressed(int key){
 
 	switch (key)
 	{
-
+	case '1':
+		visualsControler.characterScenario();
+		break;
+	case '2':
+		visualsControler.sparksScenario();
+		break;
 	case 'S':
 	case 's': //Brain Sparks
 		visualsControler.conmuteSparkingPoint();
@@ -84,12 +91,10 @@ void ofApp::keyPressed(int key){
 	case 'v':
 		if (ofGetLogLevel() == OF_LOG_VERBOSE) {
 			// verbose variables to be removed
-			channelsReceiver.bVerbose=bVerbose = false;
 			ofSetLogLevel(OF_LOG_SILENT);
 			cout<<"\nverbose mode deactivated";
 		}
 		else {
-			channelsReceiver.bVerbose = bVerbose = true;
 			ofSetLogLevel(OF_LOG_VERBOSE);
 			cout << "\nverbose mode deactivated";
 		}
@@ -171,6 +176,8 @@ void ofApp::ShowKeyboardInstructions()
 	cout << "\n V, v set the verbose mode";
 	cout << "\n L, l log statistics on screen and on file NeuroLog.txt";
 	cout << "\n SPACEBAR toggles fullscreen mode";
+	cout << "\n 1, Abstract character scenario";
+	cout << "\n 2, Sparks scenario";
 	cout << "\n F, f activated/deactivated the saving frames mode";
 	cout << "\n S, s activated/deactivated the visual: brain Sparks";
 	cout << "\n C, c activated/deactivated the visual: Crazy line";

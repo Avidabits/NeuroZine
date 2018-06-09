@@ -26,14 +26,18 @@ public:
 	void drawFirstTransformations();
 	void drawLastTransformations();
 	void onChangeWindowSize();
-	void fadeBackground();
 	void conmuteSparkingPoint();
 	void conmuteCrazyLine();
 	void conmuteBigCircle();
 	void conmuteCurtain();	 
 	void conmutePulsingCircunference();
+	void characterScenario();
+	void sparksScenario();
+
 private: 
-	ofColor backgroundColor;
+	bool bFadingBackground = false;
+	void fadeBackground();
+	ofColor backgroundColor=0; //defaul black, for beamer scenario
 	SparkingPoint sparksEmitter;
 	BigCircle circle;
 	PulsingCircunference circunference;

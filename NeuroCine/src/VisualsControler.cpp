@@ -21,15 +21,13 @@ void VisualsControler::setup()
 {
 	// perform here the setup you would do in ofApp:setup()
 	
-	// I pick black background since visuals are intended for beamer projection
-	// on performance space Neuro Cine
-	backgroundColor = RGB(0, 0, 0);
-	ofBackground(backgroundColor);
+
 
 	ofEnableSmoothing();
-	ofEnableAlphaBlending();
 	ofSetFrameRate(30); // if vertical sync is off, we can go a bit fast... this caps the framerate at 60fps.
 	ofSetCircleResolution(50);
+
+	characterScenario(); //the initial scenario
 
 	for (auto & wd : waveDrawers) {
 		wd->setup();
@@ -65,7 +63,7 @@ void VisualsControler::drawFirstTransformations()
 {
 	// Here transformations on background before Visuals
 	// and Pop Matrix if needed, rotation, translation etc.
-	fadeBackground();
+	if (bFadingBackground) fadeBackground();
 }
 
 // Once visuals are drawn, we can perform frame based transformations
@@ -74,17 +72,43 @@ void VisualsControler::drawFirstTransformations()
 void VisualsControler::drawLastTransformations()
 {
 	// Here Implement post frame transformations
+	// for example:
+	//     filter
+	//     kaleidoscopic view
+	//     rotations, translations
+	//     shaders
+	//     camera movements...
 
 	// And finally, here Pushing matrix if needed
 }
 void VisualsControler::fadeBackground()
 {
-	ofEnableAlphaBlending();    // turn on alpha blending
-	ofSetColor(backgroundColor, 127); //color black for beamer and white for screen
+	ofSetColor(backgroundColor, 75); //color black for beamer and white for screen
 	ofFill();
 	ofDrawRectangle(0, 0, ofGetWidth(), ofGetHeight());
-	ofDisableAlphaBlending();   // turn it back off, if you don't need it
 
+}
 
+void VisualsControler::characterScenario()
+{
+	bFadingBackground = false;
+	ofBackground(backgroundColor);
+	ofSetBackgroundAuto(true); 
+
+	sparksEmitter.bActive=false;
+
+	circle.bActive=circunference.bActive=crazyLine.bActive=curtain.bActive=true;
+
+}
+
+void VisualsControler::sparksScenario()
+{
+	bFadingBackground = true;
+	ofBackground(backgroundColor);
+	ofSetBackgroundAuto(false);
+
+	sparksEmitter.bActive = true;
+
+	circle.bActive = circunference.bActive = crazyLine.bActive = curtain.bActive = false;
 
 }
