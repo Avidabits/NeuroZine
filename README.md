@@ -1,10 +1,9 @@
 
-##NeuroZine
-
-
-### Descripcion
+### NeuroZine
 
 Este proyecto agrega distintos proyectos para la visualización y sonorizacion de ondas cerebrales. 
+
+![NeuroZine](https://cdn.rawgit.com/Avidabits/NeuroZine/913b125b/NeuroCine/ScenarioAbstractCharacters.png)
 
 #### Caja de Pandora I y II
 El primero de ellos, Caja de Pandora, explora el concepto desde processing, partiendo de las librerías de Eric Mika.
