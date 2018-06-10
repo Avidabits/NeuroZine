@@ -30,7 +30,9 @@ public:
 	ChannelsReceiver channelsReceiver;
 	//visuals
 	VisualsControler visualsControler;
-
+private:
+	void mySaveFrame(string path="", bool bUseViewport=true);
+	// for performance reasons I need to save frames on a RAM disk
 
 };
 

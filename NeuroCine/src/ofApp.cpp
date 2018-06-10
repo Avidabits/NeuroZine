@@ -43,7 +43,7 @@ void ofApp::draw(){
 	visualsControler.drawLastTransformations();
 
 	// Once drawing is fully finish we can save the frame
-	if (bSaveFrames) ofSaveFrame();
+	if (bSaveFrames) mySaveFrame("");
 }
 
 //--------------------------------------------------------------
@@ -162,6 +162,23 @@ void ofApp::gotMessage(ofMessage msg){
 //--------------------------------------------------------------
 void ofApp::dragEvent(ofDragInfo dragInfo){ 
 
+}
+
+int mySaveImageCounter = 0;
+void ofApp::mySaveFrame(string path, bool bUseViewport)
+{
+	// for performance reasons I need to save frames on a ram disk
+	// if path is empty it works the same way as ofSaveFrame
+	// using code copied from OpenFrameworks ofSaveFrame
+	string fileName = path;
+	fileName+=ofToString(mySaveImageCounter) + ".png";
+	if (bUseViewport) {
+		ofSaveViewport(fileName);
+	}
+	else {
+		ofSaveScreen(fileName);
+	}
+	mySaveImageCounter++;
 }
 
 

@@ -3,9 +3,11 @@
 void PulsingCircunference::update(ChannelsReceiver &channels)
 {
 	if (!bActive) return;
-	float nextRadiusAlert = ofMap(channels.beta.getOSCSample(), channels.beta.getMin(), channels.beta.getMax(), 1, ofGetHeight()/4);
+	float nextRadiusAlert = ofMap(abs(channels.beta.getOSCSample()), 0, channels.beta.getMax(), 1, ofGetHeight()/4);
 	radiusAlert = ofLerp(radiusAlert, nextRadiusAlert, 0.1);
-	
+
+	strokeWidth = ofMap(abs(channels.beta.getOSCSample()), 0, channels.beta.getHistoricalMax(), 0.5, ofGetHeight() / 70);
+
 	// instead of assigning atraccion Center inmediatly, we can aproximate to it
 	// using lerp, or pow,  but with a speed dependant on ALERT level
 	float increment = ofMap(radiusAlert, 1, ofGetHeight() / 4, FLT_EPSILON, 0.1);
@@ -19,7 +21,7 @@ void PulsingCircunference::draw()
 	// just an outline
 	ofNoFill();
 	ofSetColor(255); //TODO: must be related to colorBackground
-	ofSetLineWidth(10);
+	ofSetLineWidth(strokeWidth);
 	ofDrawCircle(attractionCenter, radiusAlert);
 
 }

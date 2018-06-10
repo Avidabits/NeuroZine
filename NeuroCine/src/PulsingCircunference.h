@@ -13,6 +13,7 @@ class PulsingCircunference : public WaveDrawer
 	
 private:
 	float radiusAlert = 0;
+	float strokeWidth = 1;
 	ofPoint attractionCenter; //REPRESENT A POSICION IN THE VALENCE/AROUSAL SPACE
 
 };

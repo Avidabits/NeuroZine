@@ -25,7 +25,7 @@ void VisualsControler::setup()
 
 	ofEnableSmoothing();
 	ofSetFrameRate(30); // if vertical sync is off, we can go a bit fast... this caps the framerate at 60fps.
-	ofSetCircleResolution(50);
+	ofSetCircleResolution(100);
 
 	characterScenario(); //the initial scenario
 
@@ -83,7 +83,7 @@ void VisualsControler::drawLastTransformations()
 }
 void VisualsControler::fadeBackground()
 {
-	ofSetColor(backgroundColor, 75); //color black for beamer and white for screen
+	ofSetColor(backgroundColor, 100.0); //color black for beamer and white for screen
 	ofFill();
 	ofDrawRectangle(0, 0, ofGetWidth(), ofGetHeight());
 
@@ -106,6 +106,7 @@ void VisualsControler::sparksScenario()
 	bFadingBackground = true;
 	ofBackground(backgroundColor);
 	ofSetBackgroundAuto(false);
+	ofEnableBlendMode(OF_BLENDMODE_ALPHA);
 
 	sparksEmitter.bActive = true;
 

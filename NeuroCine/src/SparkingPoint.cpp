@@ -16,7 +16,7 @@ void Spark::setup(ofColor _color, ofPoint _position, float _radius)
 	radius = _radius;
 	birdtime = ofGetElapsedTimeMillis();
 	position = _position;
-	velocity = { 1,0 };
+	velocity = { 0.5,0 };
 	velocity.rotate(ofRandom(180), ofVec3f(0, 0, 1));
 	acceleration = { 0, 0 }; // constante velocity, for the moment
 
