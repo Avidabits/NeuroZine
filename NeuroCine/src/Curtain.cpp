@@ -12,6 +12,22 @@ void Curtain::update(ChannelsReceiver &channels)
 	strands = ofMap(fabs(drowsiness), 0, maxDrowsiness, 200, 500);
 	//the distance between strands , density, is lower as drowsiness grows
 
+	float width = ofGetWidth(), height = ofGetHeight();
+	// First we compute target values, and the interpolate with actual ones
+	// in order to made curtain movement more organic
+	float a1Initial_x, a1Initial_y, a2Initial_x, a2Initial_y;
+	a1Initial_x = -width*0.2; // not changing
+	a1Initial_y = ofMap(fabs(drowsiness), 0, maxDrowsiness, height*0.8, -height*0.2); // will move from this value downwards generating strands
+	a2Initial_x = width*1.2; // not changing
+	a2Initial_y = ofMap(fabs(drowsiness), 0, maxDrowsiness, height*1.2, height*0.2); // will move from this value downwards generating strands
+
+	a1Initial.x = ofLerp(a1Initial.x, a1Initial_x, 0.2);
+	a1Initial.y = ofLerp(a1Initial.y, a1Initial_y, 0.2);
+	a2Initial.x = ofLerp(a2Initial.x, a2Initial_x, 0.2);
+	a2Initial.y = ofLerp(a2Initial.y, a2Initial_y, 0.2);
+	a1Final = a1Initial; a1Final.y += height*0.8;
+	a2Final = a2Initial; a2Final.y += height*0.6;
+
 }
 
 void Curtain::draw()
@@ -22,14 +38,7 @@ void Curtain::draw()
 	ofSetLineWidth(strokeWidth);
 
 
-	ofPoint a1Initial, a1Final, a2Initial, a2Final; // Initial and final ancho points
 	float width = ofGetWidth(), height = ofGetHeight();
-	a1Initial.x = -width*0.2; // not changing
-	a1Initial.y = ofMap(fabs(drowsiness), 0, maxDrowsiness, height*0.8, -height*0.2); // will move from this value downwards generating strands
-	a2Initial.x = width*1.2; // not changing
-	a2Initial.y = ofMap(fabs(drowsiness), 0, maxDrowsiness, height*1.2, height*0.2); // will move from this value downwards generating strands
-	a1Final = a1Initial; a1Final.y += height*0.8;
-	a2Final = a2Initial; a2Final.y += height*0.6;
 	ofLog() << "drowsiness:" << drowsiness << " a1Initial:" << a1Initial << " a2Initial:" << a2Initial << " a1Final:" << a1Final << " a2Final" << a2Final;
 	ofBeginShape();
 	// ai will move from ai.y to ai.y+nStrand*dStrand

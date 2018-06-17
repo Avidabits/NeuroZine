@@ -13,6 +13,13 @@ void PulsingCircunference::update(ChannelsReceiver &channels)
 	float increment = ofMap(radiusAlert, 1, ofGetHeight() / 4, FLT_EPSILON, 0.1);
 	attractionCenter.x = ofLerp(attractionCenter.x, channels.attractionCenter.x, increment);
 	attractionCenter.y = ofLerp(attractionCenter.y, channels.attractionCenter.y, increment);
+
+	// now we need to constrain Circle to window region
+	if ((attractionCenter.y - radiusAlert) < 0) attractionCenter.y = radiusAlert;
+	//if ((attractionCenter.y + radiusAlert > ofGetHeigt())) attractionCenter.y -= radiusAlert;
+	if ((attractionCenter.x - radiusAlert) < 0) attractionCenter.x = radiusAlert;
+	if ((attractionCenter.x + radiusAlert)>ofGetWidth()) attractionCenter.x -= radiusAlert;
+
 }
 
 void PulsingCircunference::draw() 

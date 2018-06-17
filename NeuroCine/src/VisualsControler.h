@@ -14,6 +14,7 @@
 #include "BigCircle.h"
 #include "CrazyLine.h"
 #include "Curtain.h"
+#include "Semantic.h"
 
 
 class VisualsControler
@@ -26,13 +27,17 @@ public:
 	void drawFirstTransformations();
 	void drawLastTransformations();
 	void onChangeWindowSize();
+	// conmuting characters
 	void conmuteSparkingPoint();
 	void conmuteCrazyLine();
 	void conmuteBigCircle();
 	void conmuteCurtain();	 
 	void conmutePulsingCircunference();
+	void conmuteSemantic();
+	// conmuting scenarios
 	void characterScenario();
 	void sparksScenario();
+
 
 private: 
 	bool bFadingBackground = false;
@@ -43,6 +48,7 @@ private:
 	PulsingCircunference circunference;
 	CrazyLine crazyLine;
 	Curtain curtain;
+	Semantic semantic;
 	// just a helper for common calling interface
 	vector<WaveDrawer *> waveDrawers;
 

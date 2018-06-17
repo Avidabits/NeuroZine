@@ -8,6 +8,8 @@ void VisualsControler::conmuteCrazyLine() { crazyLine.conmuteActivation(); }
 void VisualsControler::conmuteBigCircle() { circle.conmuteActivation(); }
 void VisualsControler::conmuteCurtain() { curtain.conmuteActivation(); }
 void VisualsControler::conmutePulsingCircunference() { circunference.conmuteActivation(); }
+void VisualsControler::conmuteSemantic() { semantic.conmuteActivation(); }
+
 
 VisualsControler::VisualsControler()
 {
@@ -16,6 +18,7 @@ VisualsControler::VisualsControler()
 	waveDrawers.push_back(&crazyLine);
 	waveDrawers.push_back(&curtain);
 	waveDrawers.push_back(&circunference);
+	waveDrawers.push_back(&semantic);
 }
 void VisualsControler::setup()
 {
@@ -96,6 +99,7 @@ void VisualsControler::characterScenario()
 	ofSetBackgroundAuto(true); 
 
 	sparksEmitter.bActive=false;
+	semantic.bActive = false;
 
 	circle.bActive=circunference.bActive=crazyLine.bActive=curtain.bActive=true;
 
@@ -110,6 +114,6 @@ void VisualsControler::sparksScenario()
 
 	sparksEmitter.bActive = true;
 
-	circle.bActive = circunference.bActive = crazyLine.bActive = curtain.bActive = false;
+	semantic.bActive=circle.bActive = circunference.bActive = crazyLine.bActive = curtain.bActive = false;
 
 }
