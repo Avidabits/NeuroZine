@@ -23,6 +23,6 @@ Se incluyen los escenarios OpenVibe y los patchs Pure Data usados en la sonifica
 
 #### NeuroCine
 
-Neuro Cine es un proyecto OpenFrameworks que integra la sonorización y la visualizacion. 
+Neuro Cine es un proyecto OpenFrameworks, PureData y OpenVibe, que integra la sonorización y la visualizacion. 
 
 
