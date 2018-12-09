@@ -36,6 +36,7 @@ void ChannelsReceiver::logStatistics()
 {
 	cout << "\n";
 	string outputString = "channel;min;max;mean;historicalMax";
+
 	outputString += "\ndelta;" + to_string(delta.getMin()) + ";" + to_string(delta.getMax()) + ";" + to_string(delta.getMean()) + ";" + to_string(delta.getHistoricalMax());
 	outputString += "\ntheta;" + to_string(theta.getMin()) + ";" + to_string(theta.getMax()) + ";" + to_string(theta.getMean()) + ";" + to_string(theta.getHistoricalMax());
 	outputString += "\nalpha;" + to_string(alpha.getMin()) + ";" + to_string(alpha.getMax()) + ";" + to_string(alpha.getMean()) + ";" + to_string(alpha.getHistoricalMax());
@@ -46,7 +47,9 @@ void ChannelsReceiver::logStatistics()
 	outputString += "\n";
 	cout << outputString;
 	ofFile logFile(ofToDataPath("NeuroLog.txt"), ofFile::WriteOnly);
-	logFile.writeFromBuffer(outputString);
+	ofBuffer ofb;
+	ofb.set(outputString);
+	logFile.writeFromBuffer(ofb);
 	logFile.close();
 
 }

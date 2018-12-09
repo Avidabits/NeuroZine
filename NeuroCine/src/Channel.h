@@ -1,5 +1,8 @@
 #pragma once
+#include "ofMain.h"
 #include "ofxOsc.h"
+
+using namespace std; 
 
 class Channel
 {
